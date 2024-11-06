@@ -114,12 +114,13 @@ public class DB_GUI_Controller implements Initializable {
         }
     }
 
+
     @FXML
     protected void editRecord() {
         Person p = tv.getSelectionModel().getSelectedItem();
         int index = data.indexOf(p);
         Person p2 = new Person(index + 1, first_name.getText(), last_name.getText(), department.getText(),
-                major.getText(), email.getText(),  imageURL.getText());
+                major.getText(), email.getText(), imageURL.getText());
         cnUtil.editUser(p.getId(), p2);
         data.remove(p);
         data.add(index, p2);

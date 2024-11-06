@@ -7,12 +7,12 @@ import service.MyLogger;
 
 import java.sql.*;
 public class DbConnectivityClass {
-    final static String DB_NAME="CSC311_BD_TEMP";
+    final static String DB_NAME="csc311_80_TEMP";
         MyLogger lg= new MyLogger();
-        final static String SQL_SERVER_URL = "jdbc:mysql://server.mariadb.database.azure.com";//update this server name
-        final static String DB_URL = "jdbc:mysql://server.mariadb.database.azure.com/"+DB_NAME;//update this database name
-        final static String USERNAME = "csc311admin@server";// update this username
-        final static String PASSWORD = "FARM";// update this password
+        final static String SQL_SERVER_URL = "jdbc:mysql://wariscsc311hw.mysql.database.azure.com";//update this server name
+        final static String DB_URL = "jdbc:mysql://wariscsc311hw.mysql.database.azure.com/"+DB_NAME;//update this database name
+        final static String USERNAME = "wariscsc311hw";// update this username
+        final static String PASSWORD = "#Catdog12";// update this password
 
 
         private final ObservableList<Person> data = FXCollections.observableArrayList();
@@ -66,7 +66,8 @@ public class DbConnectivityClass {
                 conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
                 statement = conn.createStatement();
                 String sql = "CREATE TABLE IF NOT EXISTS users (" + "id INT( 10 ) NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-                        + "first_name VARCHAR(200) NOT NULL," + "last_name VARCHAR(200) NOT NULL,"
+                        + "first_name VARCHAR(200) NOT NULL,"
+                        + "last_name VARCHAR(200) NOT NULL,"
                         + "department VARCHAR(200),"
                         + "major VARCHAR(200),"
                         + "email VARCHAR(200) NOT NULL UNIQUE,"
