@@ -6,14 +6,14 @@ import model.Person;
 import service.MyLogger;
 
 import java.sql.*;
-public class DbConnectivityClass {
-    final static String DB_NAME="csc311_80_TEMP";
+    public class DbConnectivityClass {
+        final static String DB_NAME="csc311_bd_temp";
+        public static String status = "";
         MyLogger lg= new MyLogger();
         final static String SQL_SERVER_URL = "jdbc:mysql://wariscsc311hw.mysql.database.azure.com";//update this server name
-        final static String DB_URL = "jdbc:mysql://wariscsc311hw.mysql.database.azure.com/"+DB_NAME;//update this database name
+        final String DB_URL = SQL_SERVER_URL+"/"+DB_NAME;
         final static String USERNAME = "wariscsc311hw";// update this username
         final static String PASSWORD = "#Catdog12";// update this password
-
     private final ObservableList<Person> data = FXCollections.observableArrayList();
 
     // Method to retrieve all data from the database and store it into an observable list to use in the GUI tableview.
@@ -57,7 +57,7 @@ public class DbConnectivityClass {
             //First, connect to MYSQL server and create the database if not created
             Connection conn = DriverManager.getConnection(SQL_SERVER_URL, USERNAME, PASSWORD);
             Statement statement = conn.createStatement();
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + DB_NAME + "");
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS "+DB_NAME+"");
             statement.close();
             conn.close();
 
@@ -120,24 +120,6 @@ public class DbConnectivityClass {
         }
     }
 
-    public boolean emailExists(String email) {
-        try {
-            Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-            String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, email);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            resultSet.next();
-            int count = resultSet.getInt(1);
-            preparedStatement.close();
-            conn.close();
-            return count > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public void listAllUsers() {
         connectToDatabase();
         try {
@@ -166,13 +148,39 @@ public class DbConnectivityClass {
         }
     }
 
-
-    public boolean insertUser(Person person) {
+    public String stringAllUsers() {
         connectToDatabase();
         try {
-            if (emailExists(person.getEmail())) {
-                return false;
+            Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            String sql = "SELECT * FROM users ";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            String toReturn = "";
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String first_name = resultSet.getString("first_name");
+                String last_name = resultSet.getString("last_name");
+                String department = resultSet.getString("department");
+                String major = resultSet.getString("major");
+                String email = resultSet.getString("email");
+
+                toReturn = toReturn + (first_name + "," + last_name + "," + department + "," + major + "," + email + "\n");
             }
+
+            preparedStatement.close();
+            conn.close();
+            //toReturn = toReturn.substring(0, toReturn.lastIndexOf("\n"));
+            return toReturn;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void insertUser(Person person) {
+        connectToDatabase();
+        try {
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
             String sql = "INSERT INTO users (first_name, last_name, department, major, email, imageURL) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -183,12 +191,14 @@ public class DbConnectivityClass {
             preparedStatement.setString(5, person.getEmail());
             preparedStatement.setString(6, person.getImageURL());
             int row = preparedStatement.executeUpdate();
+            if (row > 0) {
+                lg.makeLog("A new user was inserted successfully.");
+                status = "A new user was inserted successfully.";
+            }
             preparedStatement.close();
             conn.close();
-            return row > 0;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
     }
 

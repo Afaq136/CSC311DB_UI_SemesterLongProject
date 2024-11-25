@@ -1,5 +1,5 @@
 .db_btn {
-    -fx-background-color: #0a9025;
+    -fx-background-color: #a73;
     -fx-cursor: hand;
     -fx-font-family: "Arial";
     -fx-font-size: 15px;
@@ -12,13 +12,13 @@
 }
 
 .left_pane {
-    -fx-background-color: #0a9025;
+    -fx-background-color: #a73;
     -fx-pref-width: 130px;
     -fx-pref-height: 600px;
 }
 
 .admin_section {
-    -fx-background-color: #0a9025;
+    -fx-background-color: #999;
 }
 
 .table_columns {
@@ -32,11 +32,11 @@
 }
 
 .anchor_pane {
-    -fx-background-color: #0a9025;
+    -fx-background-color: #a73;
 }
 
 .text_field_pane {
-    -fx-background-color: #0549dc;
+    -fx-background-color: #79dc05;
 
 }
 
@@ -59,25 +59,27 @@
     -fx-font-weight: bold;
     -fx-alignment: CENTER_LEFT;
 }
+
+
+
 .table-view .cell{
     -fx-cell-size: 35;
     -fx-alignment: center-left;
     -fx-background-color: #FFFFFF;
-    -fx-border-color: #888;
+    -fx-border-color: #414141;
     -fx-text-fill: black;
     -fx-alignment: CENTER_LEFT;
     -fx-border-width: 0.0;
-
 }
 .table-row-cell:selected {
     -fx-background-color: whitesmoke;
     -fx-text-background-color:  #33FF55;
-
-
 }
+
 .table-row-cell:filled .cell{
     -fx-border-width: 0.3;
 }
+
 .table-view:focused .table-row-cell:selected .table-cell {
     -fx-background-color: lightBlue;
     -fx-text-fill: grey;
