@@ -6,14 +6,14 @@ import model.Person;
 import service.MyLogger;
 
 import java.sql.*;
-    public class DbConnectivityClass {
-        final static String DB_NAME="csc311_bd_temp";
-        public static String status = "";
-        MyLogger lg= new MyLogger();
-        final static String SQL_SERVER_URL = "jdbc:mysql://wariscsc311hw.mysql.database.azure.com";//update this server name
-        final String DB_URL = SQL_SERVER_URL+"/"+DB_NAME;
-        final static String USERNAME = "wariscsc311hw";// update this username
-        final static String PASSWORD = "#Catdog12";// update this password
+public class DbConnectivityClass {
+    final static String DB_NAME="csc311_bd_temp";
+    public static String status = "";
+    MyLogger lg= new MyLogger();
+    final static String SQL_SERVER_URL = "jdbc:mysql://wariscsc311hw.mysql.database.azure.com";//update this server name
+    final String DB_URL = SQL_SERVER_URL+"/"+DB_NAME;
+    final static String USERNAME = "wariscsc311hw";// update this username
+    final static String PASSWORD = "#Catdog12";// update this password
     private final ObservableList<Person> data = FXCollections.observableArrayList();
 
     // Method to retrieve all data from the database and store it into an observable list to use in the GUI tableview.
