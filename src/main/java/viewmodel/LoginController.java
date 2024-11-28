@@ -57,7 +57,7 @@ public class LoginController {
         if (validateInputs()) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/view/db_interface_gui.fxml"));
-                Scene scene = new Scene(root, 900, 600);
+                Scene scene = new Scene(root, 900, 650);
                 scene.getStylesheets().add(getClass().getResource("/css/lightTheme.css").toExternalForm());
                 Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 window.setScene(scene);

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Guide - User Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #34495e;
+        }
+        ul {
+            list-style-type: square;
+        }
+        pre {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Courier, monospace;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <h1>CSV File Handling Guide</h1>
+    <p>Welcome to the CSV guide! This page will walk you through how to work with CSV files within this application.</p>
+
+    <h2>How to Import a CSV File</h2>
+    <p>To import a CSV file into the application:</p>
+    <ul>
+        <li>Click on the <strong>Import CSV</strong> button from the main interface.</li>
+        <li>Select the desired CSV file from your computer using the file dialog.</li>
+        <li>The application will parse the file, and you will see the contents displayed in the appropriate section.</li>
+    </ul>
+
+    <h2>CSV File Format</h2>
+    <p>The CSV file should be structured as follows:</p>
+    <pre>
+        Name, Age, Email
+        John Doe, 30, john.doe@example.com
+        Jane Smith, 25, jane.smith@example.com
+    </pre>
+    <ul>
+        <li>Each row represents an individual entry.</li>
+        <li>Values in each row are separated by commas (`,`).</li>
+        <li>The first row usually contains the headers (column names) to identify each value.</li>
+    </ul>
+
+    <h2>Common Issues and How to Fix Them</h2>
+    <p>If you encounter issues while importing a CSV file, consider the following:</p>
+    <ul>
+        <li><strong>Incorrect Formatting:</strong> Ensure that all rows are consistent with the number of columns.</li>
+        <li><strong>Missing Data:</strong> If a field is missing, make sure there are no extra commas in that row.</li>
+        <li><strong>Non-UTF-8 Encoding:</strong> Make sure the CSV file is encoded in UTF-8 for compatibility with the application.</li>
+    </ul>
+
+    <h2>How to Export Data as CSV</h2>
+    <p>To export your data to a CSV file:</p>
+    <ul>
+        <li>Click on the <strong>Export CSV</strong> button.</li>
+        <li>Your data will be saved as a CSV file that you can open in any spreadsheet application like Excel or Google Sheets.</li>
+    </ul>
+
+    <h2>Tips for Working with CSV Files</h2>
+    <ul>
+        <li>Use a spreadsheet program like Excel or Google Sheets to edit and save your CSV files.</li>
+        <li>Ensure there are no special characters in the headers to avoid parsing issues.</li>
+        <li>For large CSV files, make sure the file does not exceed the application’s file size limit (check application settings).</li>
+    </ul>
+
+    <h2>Additional Resources</h2>
+    <p>If you need further assistance with CSV files or encounter issues, feel free to contact support or refer to the <a href="https://www.csvtutorials.com" target="_blank">CSV Tutorials website</a> for more information.</p>
+
+    <button class="button" onclick="window.close()">Close</button>
+</div>
+
+</body>
+</html>

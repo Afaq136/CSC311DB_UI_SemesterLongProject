@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1100.0" style="-fx-border-color: BLACK;" styleClass="v13_13" stylesheets="@../css/lightTheme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewmodel.SignUpController">
+<GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1100.0" style="-fx-border-color: BLACK; -fx-background-color: black;" styleClass="v13_13" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewmodel.SignUpController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="460.0" minWidth="10.0" prefWidth="162.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="460.0" minWidth="10.0" prefWidth="196.0" />
@@ -39,10 +38,15 @@
         <RowConstraints maxHeight="335.1999877929687" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
+      <ImageView fitHeight="808.0" fitWidth="1179.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+         <image>
+            <Image url="@../images/fscLogin.jpeg" />
+         </image>
+      </ImageView>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="6" GridPane.rowIndex="2" />
         <VBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="465.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
          <children>
-                <Label alignment="CENTER" focusTraversable="false" prefHeight="55.0" prefWidth="382.0" style="-fx-border-color: BLACK;" text="New User" textFill="#1b0000">
+                <Label alignment="CENTER" focusTraversable="false" prefHeight="55.0" prefWidth="382.0" style="-fx-border-color: BLACK;" text="Sign Up" textFill="#f8f8f8">
                     <font>
                         <Font name="System Bold" size="36.0" />
                     </font>
@@ -90,14 +94,6 @@
                 <Insets />
             </opaqueInsets>
         </VBox>
-        <ImageView fitHeight="174.0" fitWidth="193.0" GridPane.rowIndex="1">
-            <image>
-                <Image url="@../images/fsc.png" />
-            </image>
-            <effect>
-                <Glow />
-            </effect>
-        </ImageView>
       <HBox prefHeight="57.0" prefWidth="270.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
       <HBox prefHeight="49.0" prefWidth="259.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
     </children>

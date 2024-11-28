@@ -39,6 +39,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import static dao.DbConnectivityClass.status;
 
@@ -115,19 +116,13 @@ public class DB_GUI_Controller implements Initializable {
 
     @FXML
     protected void textBoxCheck() {
-        canModify =
-                !(first_name.getText().isEmpty() ||
-                        last_name.getText().isEmpty() ||
-                        department.getText().isEmpty() ||
-                        major_drop.getValue().isBlank() ||
-                        email.getText().isEmpty());
-        canAdd =
-                (!first_name.getText().isEmpty() &&
-                        !last_name.getText().isEmpty() &&
-                        !department.getText().isEmpty() &&
-                        !major_drop.getValue().isBlank() &&
-                        !email.getText().isEmpty());
+        boolean validFirstName = validateName(first_name.getText());
+        boolean validLastName = validateName(last_name.getText());
+        boolean validDepartment = validateDepartment(department.getText());
+        boolean validEmail = validateEmail(email.getText());
 
+
+        // Enable/Disable buttons based on validation
         editButton.setDisable(!canModify);
         deleteButton.setDisable(!canModify);
         editItem.setDisable(!canModify);
@@ -137,6 +132,24 @@ public class DB_GUI_Controller implements Initializable {
         newItem.setDisable(!canAdd);
         editItem.setDisable(!canModify);
         deleteItem.setDisable(!canModify);
+    }
+
+    // Validate First Name and Last Name (only alphabetic characters and spaces)
+    private boolean validateName(String name) {
+        String regex = "^[A-Za-z]+([\\s][A-Za-z]+)*$";
+        return Pattern.matches(regex, name);
+    }
+
+    // Validate Department (alphanumeric characters)
+    private boolean validateDepartment(String department) {
+        String regex = "^[A-Za-z0-9]+([\\s][A-Za-z0-9]+)*$";
+        return Pattern.matches(regex, department);
+    }
+
+    // Validate Email
+    private boolean validateEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        return Pattern.matches(regex, email);
     }
 
 
@@ -273,7 +286,7 @@ public class DB_GUI_Controller implements Initializable {
             Stage stage = (Stage) menuBar.getScene().getWindow();
             Scene scene = stage.getScene();
             scene.getStylesheets().clear();
-            scene.getStylesheets().add(getClass().getResource("darkTheme.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/css/darkTheme.css").toExternalForm());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -393,16 +406,19 @@ public class DB_GUI_Controller implements Initializable {
         fw.close();
     }
 
-    @FXML
-    protected void formatDoc() throws IOException {
-        File htmlFile = new File("docs/csv-guide.html");
-        Desktop.getDesktop().browse(htmlFile.toURI());
-    }
 
     @FXML
-    protected void helpDoc() throws IOException {
-        File htmlFile = new File("docs/index.html");
-        Desktop.getDesktop().browse(htmlFile.toURI());
+    protected void userGuide() throws IOException {
+        // Specify the path to the HTML file
+        File htmlFile = new File("C:\\Users\\mahsa\\Desktop\\Fall 2024\\CSC311-AP\\CSC311_DB_UI_semesterlongproject\\src\\main\\resources\\view\\csv-guide.html");
+
+        // Check if the file exists before attempting to open it
+        if (htmlFile.exists()) {
+            // Open the file in the default browser
+            Desktop.getDesktop().browse(htmlFile.toURI());
+        } else {
+            System.out.println("The file was not found: " + htmlFile.getAbsolutePath());
+        }
     }
 
     @FXML

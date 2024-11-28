@@ -68,12 +68,11 @@
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#importCsv" text="Import CSV..." />
                                 <MenuItem mnemonicParsing="false" onAction="#exportCsv" text="Export CSV..." />
-                                <MenuItem mnemonicParsing="false" onAction="#formatDoc" text="Formatting Help" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" styleClass="menu_options" text="Help">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#helpDoc" styleClass="menu_items" text="User Guide" />
+                                <MenuItem mnemonicParsing="false" onAction="#userGuide" styleClass="menu_items" text="User Guide" />
                                 <MenuItem mnemonicParsing="false" onAction="#displayAbout" styleClass="menu_items" text="About" />
                             </items>
                         </Menu>
@@ -90,7 +89,7 @@
                                         <Image url="@../images/profile.png" />
                                     </image>
                                 </ImageView>
-                                <ProgressIndicator layoutX="78.0" layoutY="132.0" opacity="0.0" progress="0.0" style="-fx-effect: #0000ff;">
+                                <ProgressIndicator layoutX="52.0" layoutY="54.0" opacity="0.0" prefHeight="77.0" prefWidth="78.0" progress="0.0" style="-fx-effect: #0000ff;">
                                     <tooltip>
                                         <Tooltip text="Click here to upload a new profile picture." />
                                     </tooltip></ProgressIndicator>
