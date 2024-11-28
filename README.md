@@ -1,5 +1,5 @@
 
-# **JavaFX Database Management System**
+# **JavaFX Library Database Management System**
 
 ## **Overview**
 
