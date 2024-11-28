@@ -1,2 +1,35 @@
 firstname,lastname,department,major,email
-a,a,a,Computer Science,a
+Berry,Alan,Science,Dentistry,balan@farmingdale.edu
+afaq,waris,Engineering,Computer Science,waria@farmingdale.du
+John,Snow,Biology,Nursing,Jsnow@farmingdale.edu
+alex,snow,Science,Economics,alexs@farmingdale.edu
+Class,ClassType,Class_Name,Credits,Cost
+USSO10100,LIBERAL,US Society and People,3,671
+HIST20400,LIBERAL,Early-Modern Europe,3,788
+HIST20600,LIBERAL,Modern Europe,3,718
+HIST34900,LIBERAL,The Third Reich,3,636
+THR21200,LIBERAL,Introduction to Drama,3,598
+ENGR10100,ENGR,Engineering Design I,1,678
+ENGR10300,ENGR,Computer-Aided Analysis Tools for Engineers,3,730
+ENGR19999,ENGR,A Data Science and Statistical Approach to Programming,3,632
+ENGR23000,ENGR,Thermodynamics,3,596
+ENGR27600,ENGR,Engineering Economics,3,720
+ENGR30100,ENGR,Introduction to Satellite Remote Sensing and Imaging,3,522
+ENGR55600,ENGR,Nuclear Reactor Design Operation and Safety,3,569
+EE33300,EE,Electromagnetics II,3,710
+EE34200,EE,Electronics II,3,664
+EE35700,EE,Electric Power Engineering,3,643
+EE44100,EE,Solid State Devices,3,734
+EE45700,EE,Digital Integrated Circuits,3,717
+EE46000,EE,Computer Communications Systems,3,591
+EE59837,EE,AI Solutions in EE,3,515
+MATH30800,ELECTIVE,Bridge to Advanced Mathematics,3,551
+MATH32300,ELECTIVE,Advanced Calculus I,3,573
+MATH32404,ELECTIVE,Advanced Calculus II,3,651
+MATH32800,ELECTIVE,Methods of Numerical Analysis,3,644
+MATH34500,ELECTIVE,Theory of Numbers,3,663
+CSVTEST_F,CSVTEST_L,CSVTEST_D,CSVTEST_M,CSVTEST_E
+MATH36500,ELECTIVE,Element of Combinatorics,3,713
+CSVTEST2_F,CSVTEST2_L,CSVTEST2_D,CSVTEST2_M,CSVTEST2_E
+MATH36600,ELECTIVE,Introduction to Applied Math Computation,3,595
+MATH38100,ELECTIVE,Discrete Models of Financial Mathematics,3,794
