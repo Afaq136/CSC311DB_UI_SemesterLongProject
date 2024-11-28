@@ -1,7 +1,6 @@
 package viewmodel;
 
 import javafx.animation.FadeTransition;
-import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,16 +8,20 @@ import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
-
 public class LoginController {
 
+    @FXML
+    private TextField usernameTextField;
+    @FXML
+    private PasswordField passwordField;
 
     @FXML
     private GridPane rootpane;
@@ -33,7 +36,6 @@ public class LoginController {
                         null
                 )
         );
-
 
         rootpane.setOpacity(0);
         FadeTransition fadeOut2 = new FadeTransition(Duration.seconds(10), rootpane);
@@ -52,18 +54,21 @@ public class LoginController {
 
     @FXML
     public void login(ActionEvent actionEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/db_interface_gui.fxml"));
-            Scene scene = new Scene(root, 900, 600);
-            scene.getStylesheets().add(getClass().getResource("/css/lightTheme.css").toExternalForm());
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (validateInputs()) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/view/db_interface_gui.fxml"));
+                Scene scene = new Scene(root, 900, 600);
+                scene.getStylesheets().add(getClass().getResource("/css/lightTheme.css").toExternalForm());
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
+    @FXML
     public void signUp(ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/signUp.fxml"));
@@ -77,18 +82,33 @@ public class LoginController {
         }
     }
 
-    private void addHoverEffect(Button button) {
-        ScaleTransition scaleIn = new ScaleTransition(Duration.millis(200), button);
-        scaleIn.setToX(1.1);
-        scaleIn.setToY(1.1);
+    private boolean validateInputs() {
+        String username = usernameTextField.getText();
+        String password = passwordField.getText();
 
-        ScaleTransition scaleOut = new ScaleTransition(Duration.millis(200), button);
-        scaleOut.setToX(1.0);
-        scaleOut.setToY(1.0);
+        if (username == null || username.trim().isEmpty()) {
+            showAlert("Validation Error", "Username cannot be empty.");
+            return false;
+        }
 
-        button.setOnMouseEntered(e -> scaleIn.play());
-        button.setOnMouseExited(e -> scaleOut.play());
+        if (password == null || password.trim().isEmpty()) {
+            showAlert("Validation Error", "Password cannot be empty.");
+            return false;
+        }
 
+        if (password.length() < 8 || !password.matches(".*[A-Z].*") || !password.matches(".*[0-9].*")) {
+            showAlert("Validation Error", "Password must be at least 8 characters long, contain one uppercase letter, and one number.");
+            return false;
+        }
 
+        return true;
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

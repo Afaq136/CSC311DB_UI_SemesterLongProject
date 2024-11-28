@@ -139,6 +139,7 @@ public class DB_GUI_Controller implements Initializable {
         deleteItem.setDisable(!canModify);
     }
 
+
     @FXML
     protected void addNewRecord() {
 
@@ -250,6 +251,8 @@ public class DB_GUI_Controller implements Initializable {
         textBoxCheck();
     }
 
+
+
     public void lightTheme(ActionEvent actionEvent) {
         try {
             Scene scene = menuBar.getScene();
@@ -270,7 +273,7 @@ public class DB_GUI_Controller implements Initializable {
             Stage stage = (Stage) menuBar.getScene().getWindow();
             Scene scene = stage.getScene();
             scene.getStylesheets().clear();
-            scene.getStylesheets().add(getClass().getResource("/css/ak-darkmode.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("darkTheme.css").toExternalForm());
         } catch (Exception e) {
             e.printStackTrace();
         }
