@@ -63,6 +63,9 @@ public class DB_GUI_Controller implements Initializable {
     StorageUploader store= new StorageUploader();
 
     @FXML
+    ComboBox<String> Major_filter;
+
+    @FXML
     TextField first_name, last_name, department, email, imageURL;
     @FXML
     MenuItem newItem, editItem, deleteItem;
@@ -111,14 +114,23 @@ public class DB_GUI_Controller implements Initializable {
                 curr = curr.replace('_',' ');
                 major_drop.getItems().add(curr);
             }
+
+            String curr2;
+            for(majors m: majors.values()) {
+                curr = m.toString();
+                curr = curr.replace('_',' ');
+                Major_filter.getItems().add(curr);
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         textBoxCheck();
     }
 
+
+
     @FXML
-    protected void CS_filter(ActionEvent actionEvent) {
+    protected void Filter_major_command(ActionEvent actionEvent) {
         try
         {
             File file = new File("src/main/resources/export.pdf");
@@ -127,7 +139,7 @@ public class DB_GUI_Controller implements Initializable {
             Document document = new Document(pdfDoc);
 
             for(Person person: data){
-                if(person.getMajor().equals("Computer Science")){
+                if(person.getMajor().equals(Major_filter.getValue())){
                     document.add(new Paragraph(person.toString()));
                     System.out.println(person);
                 }
