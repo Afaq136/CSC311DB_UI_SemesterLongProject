@@ -6,6 +6,8 @@ module com.example.csc311_db_ui_semesterlongproject {
     requires com.opencsv;
     requires java.desktop;
     requires java.prefs;
+    requires kernel;
+    requires layout;
 
 
     opens viewmodel;

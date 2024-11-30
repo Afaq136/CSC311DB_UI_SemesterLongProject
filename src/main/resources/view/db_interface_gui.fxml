@@ -95,7 +95,7 @@
                                     </tooltip></ProgressIndicator>
                               <ImageView fitHeight="304.0" fitWidth="184.0" layoutX="-6.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                      <Image url="@../images/fsc.png" />
+                                      <Image url="@../images/Library.jpg" />
                                   </image>
                               </ImageView>
                             </children>
@@ -144,6 +144,7 @@
                                 <Insets bottom="40.0" right="20.0" top="40.0" />
                             </VBox.margin>
                         </Label>
+                  <Button fx:id="CS_major" mnemonicParsing="false" onAction="#CS_filter" text="CS Major" />
                         <Button mnemonicParsing="false" onAction="#clearForm" styleClass="db_btn" text="Clear">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

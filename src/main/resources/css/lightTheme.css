@@ -100,7 +100,11 @@
     -fx-background-radius: 2em;
     -fx-border-radius:2em;
 }
+/* button-style.css */
 
+.button:pressed {
+    -fx-background-color: #6c6c6c; /* Darker color when clicked */
+}
 /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
 .table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {

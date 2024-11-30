@@ -36,7 +36,11 @@
     -fx-background-color: #32cd32; /* Green for headers */
     -fx-text-fill: #ffffff; /* White text */
 }
+/* button-style.css */
 
+.button:pressed {
+    -fx-background-color: #6c6c6c; /* Darker color when clicked */
+}
 /* Menu Bar */
 .menu_bar {
     -fx-background-color: #000000; /* Black for the main bar */

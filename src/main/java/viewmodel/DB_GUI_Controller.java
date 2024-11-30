@@ -1,6 +1,10 @@
 package viewmodel;
 
 import com.azure.storage.blob.BlobClient;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
 import dao.DbConnectivityClass;
 import dao.StorageUploader;
 import javafx.application.Platform;
@@ -39,7 +43,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import static dao.DbConnectivityClass.status;
 
@@ -115,14 +118,42 @@ public class DB_GUI_Controller implements Initializable {
     }
 
     @FXML
+    protected void CS_filter(ActionEvent actionEvent) {
+        try
+        {
+            File file = new File("src/main/resources/export.pdf");
+            PdfWriter writer = new PdfWriter(file);
+            PdfDocument pdfDoc = new PdfDocument(writer);
+            Document document = new Document(pdfDoc);
+
+            for(Person person: data){
+                if(person.getMajor().equals("Computer Science")){
+                    document.add(new Paragraph(person.toString()));
+                    System.out.println(person);
+                }
+            }
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
     protected void textBoxCheck() {
-        boolean validFirstName = validateName(first_name.getText());
-        boolean validLastName = validateName(last_name.getText());
-        boolean validDepartment = validateDepartment(department.getText());
-        boolean validEmail = validateEmail(email.getText());
+        canModify =
+                !(first_name.getText().isEmpty() ||
+                        last_name.getText().isEmpty() ||
+                        department.getText().isEmpty() ||
+                        major_drop.getValue().isBlank() ||
+                        email.getText().isEmpty());
+        canAdd =
+                (!first_name.getText().isEmpty() &&
+                        !last_name.getText().isEmpty() &&
+                        !department.getText().isEmpty() &&
+                        !major_drop.getValue().isBlank() &&
+                        !email.getText().isEmpty());
 
-
-        // Enable/Disable buttons based on validation
         editButton.setDisable(!canModify);
         deleteButton.setDisable(!canModify);
         editItem.setDisable(!canModify);
@@ -132,24 +163,6 @@ public class DB_GUI_Controller implements Initializable {
         newItem.setDisable(!canAdd);
         editItem.setDisable(!canModify);
         deleteItem.setDisable(!canModify);
-    }
-
-    // Validate First Name and Last Name (only alphabetic characters and spaces)
-    private boolean validateName(String name) {
-        String regex = "^[A-Za-z]+([\\s][A-Za-z]+)*$";
-        return Pattern.matches(regex, name);
-    }
-
-    // Validate Department (alphanumeric characters)
-    private boolean validateDepartment(String department) {
-        String regex = "^[A-Za-z0-9]+([\\s][A-Za-z0-9]+)*$";
-        return Pattern.matches(regex, department);
-    }
-
-    // Validate Email
-    private boolean validateEmail(String email) {
-        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        return Pattern.matches(regex, email);
     }
 
 
